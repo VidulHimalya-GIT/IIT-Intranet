@@ -28,6 +28,25 @@ Then open http://localhost:5510/. The landing page links to the sign-in page, an
 | Campus life | `campus-life.html` |
 | Help and support | `help-support.html` |
 
+## How the demo behaves
+
+- The left sidebar moves between the seven student pages. On phones it opens from the menu button.
+- Resource rows, cards, notices and quick links are clickable controls, but they show a short message instead of opening a document.
+- The search box filters the resources on the current page.
+- Notification buttons show a demo message.
+- Sign out returns to the landing page.
+
+## Files
+
+| File | Purpose |
+| --- | --- |
+| `student-dashboard.css`, `student-dashboard.js` | Overview page styling and interactions |
+| `student-pages.css`, `student-pages.js` | Shared styling and interactions for the six section pages |
+| `shell.js` | Phone navigation menu, used by every student page |
+| `portal.css`, `tailwind.config.js` | Sign-in page styling, built with Tailwind |
+| `IIT_Logo.png` | IIT branding |
+| `vendor/fontawesome` | Icons |
+
 ## Styling
 
 Icons are Font Awesome 6.4.0, stored in `vendor/fontawesome`. The sign-in page uses `portal.css`, built with Tailwind CSS 3.4 from `iit_intranet_portal.html`. After changing Tailwind classes on that page, rebuild it in this folder:
@@ -35,6 +54,8 @@ Icons are Font Awesome 6.4.0, stored in `vendor/fontawesome`. The sign-in page u
 ```
 npx tailwindcss@3.4.17 -o portal.css --minify
 ```
+
+Fonts load from Google Fonts. Offline, the pages fall back to the system sans-serif and serif fonts.
 
 ## Contributors
 
