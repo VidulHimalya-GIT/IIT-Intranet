@@ -86,3 +86,6 @@ button.notice-item{font:inherit;text-align:left;cursor:pointer;width:100%;color:
 .resources-section .resource-title h3{margin:0}
 .date-panel small,.category,.programme-column h3,.notice-date small{letter-spacing:.02em}
 .category{font-weight:700}
+
+/* 16px stops phone browsers zooming in when the search box is tapped. */
+@media (max-width:800px){.top-search input{font-size:16px}}
