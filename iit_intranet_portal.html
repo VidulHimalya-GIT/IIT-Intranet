@@ -49,8 +49,8 @@
                 </p>
             </div>
 
-            <!-- Footer Copyright -->
-            <div class="relative z-10 text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-6 border-t border-white/10">
+            <!-- Footer Copyright (desktop; phones get the copy at the bottom of the page) -->
+            <div class="relative z-10 text-xs text-gray-400 hidden lg:flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-6 border-t border-white/10">
                 <span>© IIT 2026 · All rights reserved</span>
                 <div class="flex gap-4">
                     <a href="#" onclick="openModal('privacyModal')" class="hover:text-white transition-colors">Privacy Policy</a>
@@ -148,6 +148,16 @@
                 </div>
             </div>
         </div>
+
+        <!-- Footer Copyright (phones: always the last thing on the page) -->
+        <footer class="lg:hidden bg-[#16181A] text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 px-8 sm:px-12 py-6">
+            <span>© IIT 2026 · All rights reserved</span>
+            <div class="flex gap-4">
+                <a href="#" onclick="openModal('privacyModal')" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" onclick="openModal('termsModal')" class="hover:text-white transition-colors">Terms of Use</a>
+                <a href="#" onclick="openModal('supportModal')" class="hover:text-white transition-colors">IT Helpdesk</a>
+            </div>
+        </footer>
     </div>
 
     <!-- MODALS -->
