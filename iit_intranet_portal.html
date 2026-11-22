@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#16181A]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIT Intranet · Sign in</title>
+    <!-- portal.css is built from this page with Tailwind 3.4: see README-ATP-Intranet.txt before adding new Tailwind classes. -->
+    <link rel="stylesheet" href="portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+    <style>
+        input::placeholder { color: #6b7280; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        input[type="checkbox"] {
+            accent-color: #C41230;
+        }
+    </style>
+</head>
+<body class="h-full m-0 p-0 antialiased selection:bg-iitRed selection:text-white">
+
+    <div class="min-h-screen flex flex-col lg:grid lg:grid-cols-12 w-full">
+        <!-- LEFT SIDE: Hero Section -->
+        <div class="lg:col-span-6 bg-[#16181A] text-white relative overflow-hidden flex flex-col justify-between p-8 sm:p-12 lg:p-16">
+
+            <div class="relative z-10 flex items-center justify-between">
+                <div class="bg-white rounded-lg p-3 flex items-center gap-3 border border-white/10">
+                    <img src="IIT_Logo.png" alt="IIT Logo" class="w-10 h-10 object-contain">
+                    <div class="leading-tight">
+                        <span class="block font-bold text-gray-900 tracking-wider text-xs font-sans">INFORMATICS</span>
+                        <span class="block font-bold text-gray-900 tracking-wider text-xs font-sans">INSTITUTE OF</span>
+                        <span class="block font-bold text-iitRed tracking-wider text-xs font-sans">TECHNOLOGY</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative z-10 my-12 lg:my-0">
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+                    Your timetable, modules and forms, <span class="text-iitGold">in one place.</span>
+                </h1>
+                <p class="text-gray-300 text-base sm:text-lg max-w-lg leading-relaxed font-light">
+                    Access academic resources, personalized timetables, module materials, library services and digital tools tailored specifically for your studies.
+                </p>
+            </div>
+
+            <!-- Footer Copyright -->
+            <div class="relative z-10 text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-6 border-t border-white/10">
+                <span>© IIT 2026 · All rights reserved</span>
+                <div class="flex gap-4">
+                    <a href="#" onclick="openModal('privacyModal')" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" onclick="openModal('termsModal')" class="hover:text-white transition-colors">Terms of Use</a>
+                    <a href="#" onclick="openModal('supportModal')" class="hover:text-white transition-colors">IT Helpdesk</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: Interactive Login Card & Form -->
+        <div class="order-first lg:order-none lg:col-span-6 bg-[#F8F9FA] flex flex-col justify-between p-6 sm:p-12 lg:p-16">
+
+            <!-- Authentication Card Container -->
+            <div class="w-full max-w-md mx-auto bg-white rounded-lg border border-gray-200 p-8 my-auto">
+                
+                <!-- Card Header -->
+                <div class="mb-6 text-center sm:text-left">
+                    <h2 class="font-serif text-3xl font-bold text-gray-900 tracking-tight">Sign in to the intranet</h2>
+                    <p class="text-gray-500 text-sm mt-1.5">Sign in with Google or your student email account.</p>
+                </div>
+
+                <!-- Google Sign-In Button -->
+                <button type="button" onclick="handleGoogleSignIn()" id="googleBtn" class="w-full bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-4 rounded-lg border border-gray-300 shadow-sm transition-colors flex items-center justify-center gap-3 group mb-5">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    <span class="text-sm font-semibold text-gray-700">Sign in with Google</span>
+                </button>
+
+                <!-- Divider -->
+                <div class="relative flex items-center justify-center mb-5">
+                    <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200"></div></div>
+                    <span class="relative bg-white px-3 text-xs text-gray-500 font-medium">or use your student email</span>
+                </div>
+
+                <!-- Direct Email & Password Login Form -->
+                <form id="loginForm" onsubmit="handleEmailLogin(event)" class="space-y-4">
+                    <!-- Email Field -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Student email</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <input type="email" id="emailInput" required 
+                                placeholder="name.2025xxxx@iit.ac.lk"
+                                class="w-full pl-10 pr-4 py-3 bg-gray-50/50 border border-gray-200 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-iitRed/20 focus:border-iitRed transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="block text-sm font-semibold text-gray-700">Password</label>
+                            <a href="#" onclick="openModal('forgotPasswordModal')" class="text-xs font-medium text-iitRed hover:underline">Forgot password?</a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <input type="password" id="passwordInput" required 
+                                placeholder="Enter your password" 
+                                class="w-full pl-10 pr-12 py-3 bg-gray-50/50 border border-gray-200 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-iitRed/20 focus:border-iitRed transition-colors">
+                            <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-600 focus:outline-none">
+                                <i id="togglePasswordIcon" class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Keep me signed in Checkbox -->
+                    <div class="flex items-center justify-between pt-1">
+                        <label class="flex items-center gap-2 cursor-pointer select-none">
+                            <input type="checkbox" id="rememberMe" class="w-4 h-4 rounded border-gray-300 text-iitRed focus:ring-iitRed">
+                            <span class="text-xs text-gray-600 font-medium">Keep me signed in</span>
+                        </label>
+                        <span class="text-xs text-gray-500"><i class="fa-solid fa-shield-halved text-emerald-500 mr-1"></i> Secure SSO</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitBtn" class="w-full mt-2 bg-iitRed hover:bg-iitRedHover text-white font-medium py-3.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 group">
+                        <span id="btnText">Sign in as student</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </form>
+
+                <!-- Help Link Footer -->
+                <div class="mt-6 pt-5 border-t border-gray-100 text-center">
+                    <p class="text-xs text-gray-500">
+                        Having trouble signing in? 
+                        <a href="#" onclick="openModal('supportModal')" class="text-iitRed font-semibold hover:underline ml-1">Contact IT support</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" role="dialog" aria-modal="true" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeModal('forgotPasswordModal')" aria-label="Close" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 mb-2">Reset your password</h3>
+            <p class="text-gray-500 text-sm mb-6">Enter your registered IIT student email address and we'll send you a password reset link.</p>
+            
+            <form onsubmit="handlePasswordReset(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Student email</label>
+                    <input type="email" required placeholder="w20xxxxx@iit.ac.lk" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-iitRed/20 focus:border-iitRed">
+                </div>
+                <button type="submit" class="w-full bg-iitRed hover:bg-iitRedHover text-white font-medium py-3 rounded-lg shadow-md transition-colors">
+                    Send Reset Link
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- IT Support Modal -->
+    <div id="supportModal" role="dialog" aria-modal="true" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeModal('supportModal')" aria-label="Close" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 mb-2">IIT IT Helpdesk and Support</h3>
+            <p class="text-gray-500 text-sm mb-6">Our technical support team is available during standard operating hours.</p>
+            
+            <div class="space-y-3 mb-6">
+                <div class="flex items-center gap-3 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                    <i class="fa-solid fa-envelope text-iitRed text-lg"></i>
+                    <div>
+                        <span class="block text-xs text-gray-400 font-medium">Email Support</span>
+                        <a href="mailto:support@iit.ac.lk" class="text-sm font-bold text-gray-800 hover:underline">support@iit.ac.lk</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                    <i class="fa-solid fa-phone text-iitRed text-lg"></i>
+                    <div>
+                        <span class="block text-xs text-gray-400 font-medium">Helpline</span>
+                        <span class="text-sm font-bold text-gray-800">+94 11 236 0212</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                    <i class="fa-solid fa-clock text-iitRed text-lg"></i>
+                    <div>
+                        <span class="block text-xs text-gray-400 font-medium">Hours</span>
+                        <span class="text-sm font-bold text-gray-800">Mon - Fri: 8:30 AM - 5:00 PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="closeModal('supportModal')" class="w-full bg-gray-900 hover:bg-black text-white font-medium py-3 rounded-lg transition-colors">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" role="dialog" aria-modal="true" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-lg w-full p-6 shadow-2xl relative max-h-[80vh] overflow-y-auto">
+            <button onclick="closeModal('termsModal')" aria-label="Close" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Terms of Use</h3>
+            <div class="space-y-3 text-sm text-gray-600 leading-relaxed mb-6">
+                <p>Welcome to the Informatics Institute of Technology (IIT) Student Intranet. By accessing or using this portal, you agree to comply with and be bound by the following terms and conditions.</p>
+                <p><strong>1. Authorized Access:</strong> This system is strictly for authorized students of IIT. Unauthorized access attempts are strictly prohibited and monitored.</p>
+            </div>
+            <button onclick="closeModal('termsModal')" class="w-full bg-iitRed text-white font-medium py-3 rounded-lg">Understood</button>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacyModal" role="dialog" aria-modal="true" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-lg w-full p-6 shadow-2xl relative max-h-[80vh] overflow-y-auto">
+            <button onclick="closeModal('privacyModal')" aria-label="Close" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Privacy Policy</h3>
+            <div class="space-y-3 text-sm text-gray-600 leading-relaxed mb-6">
+                <p>IIT is committed to protecting the privacy and security of personal data collected through our student intranet portals in compliance with institutional data protection standards.</p>
+            </div>
+            <button onclick="closeModal('privacyModal')" class="w-full bg-iitRed text-white font-medium py-3 rounded-lg">Close</button>
+        </div>
+    </div>
+
+    <!-- Success Login Toast -->
+    <div id="successToast" class="fixed bottom-6 right-6 bg-gray-900 text-white px-6 py-4 rounded-xl shadow-2xl z-50 hidden flex items-center gap-4 border border-emerald-500/30">
+        <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm">Authentication Successful!</h4>
+            <p id="toastMessage" class="text-xs text-gray-300">Redirecting to your student dashboard...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Toggle Password Visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('passwordInput');
+            const icon = document.getElementById('togglePasswordIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.className = 'fa-solid fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                icon.className = 'fa-solid fa-eye';
+            }
+        }
+
+        // Handle Google Sign In
+        function handleGoogleSignIn() {
+            const googleBtn = document.getElementById('googleBtn');
+            googleBtn.disabled = true;
+            googleBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin text-lg text-gray-500"></i> <span class="text-sm font-semibold text-gray-600">Connecting to Google...</span>`;
+
+            setTimeout(() => {
+                googleBtn.disabled = false;
+                googleBtn.innerHTML = `
+                    <svg class="w-5 h-5" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    <span class="text-sm font-semibold text-gray-700">Sign in with Google</span>
+                `;
+
+                const toast = document.getElementById('successToast');
+                const toastMsg = document.getElementById('toastMessage');
+                toastMsg.innerText = `Authenticated via Google. Loading student intranet...`;
+                toast.classList.remove('hidden');
+
+                setTimeout(() => {
+                    window.location.href = 'student-dashboard.html';
+                }, 1200);
+            }, 1500);
+        }
+
+        // Handle Email Login Submission
+        function handleEmailLogin(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const email = document.getElementById('emailInput').value;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin text-lg"></i> Authenticating...`;
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<span>Sign in as student</span> <i class="fa-solid fa-arrow-right-long"></i>`;
+
+                const toast = document.getElementById('successToast');
+                const toastMsg = document.getElementById('toastMessage');
+                toastMsg.innerText = `Welcome back, ${email}! Loading student intranet portal...`;
+                toast.classList.remove('hidden');
+
+                setTimeout(() => {
+                    window.location.href = 'student-dashboard.html';
+                }, 1200);
+            }, 1500);
+        }
+
+        // Handle Password Reset Submission
+        function handlePasswordReset(event) {
+            event.preventDefault();
+            closeModal('forgotPasswordModal');
+            const toast = document.getElementById('successToast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = `Password reset instructions have been sent to your email.`;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 4000);
+        }
+
+        // Modal Controls
+        const MODAL_IDS = ['forgotPasswordModal', 'supportModal', 'termsModal', 'privacyModal'];
+        const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea, select, [tabindex]:not([tabindex="-1"])';
+        let modalOpener = null;
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modalOpener = document.activeElement;
+            modal.classList.remove('hidden');
+            // Start on the first field, else the first button (the close X comes first in the markup).
+            (modal.querySelector('input, textarea, select') || modal.querySelector(FOCUSABLE))?.focus();
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal.classList.contains('hidden')) return;
+            modal.classList.add('hidden');
+            modalOpener?.focus();
+            modalOpener = null;
+        }
+
+        // Escape closes the open window; Tab stays inside it.
+        document.addEventListener('keydown', (event) => {
+            const modal = MODAL_IDS.map(id => document.getElementById(id)).find(m => !m.classList.contains('hidden'));
+            if (!modal) return;
+            if (event.key === 'Escape') { closeModal(modal.id); return; }
+            if (event.key !== 'Tab') return;
+            const items = [...modal.querySelectorAll(FOCUSABLE)];
+            const first = items[0], last = items[items.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        });
+
+        window.onclick = function(event) {
+            MODAL_IDS.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    closeModal(modalId);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

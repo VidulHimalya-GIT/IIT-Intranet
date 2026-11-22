@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IIT Intranet · Help and support</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="vendor/fontawesome/css/all.min.css" rel="stylesheet"/>
+<link href="student-dashboard.css" rel="stylesheet"/>
+<link href="student-pages.css" rel="stylesheet"/>
+</head>
+<body class="resource-page">
+<header class="topbar">
+<button aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation" class="mobile-menu" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+<div aria-label="IIT Student Intranet" class="brand"><img alt="IIT logo" src="IIT_Logo.png"/><span>INFORMATICS<br/>INSTITUTE OF<br/><b>TECHNOLOGY</b></span></div>
+<div class="top-search"><i class="fa-solid fa-magnifying-glass"></i><input aria-label="Search this page" id="globalSearch" placeholder="Search this page…" type="search"/></div>
+<div class="top-actions">
+<button aria-label="Notifications" class="icon-button" id="notificationButton"><i class="fa-regular fa-bell"></i></button>
+<div class="account"><div class="avatar">SA</div><div class="account-info"><strong>Student Account</strong><small>2026/27</small></div><a class="signout" href="iit_intranet_portal.html">Sign out</a></div>
+</div>
+</header>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<nav aria-label="Main navigation" class="side-nav">
+<a class="nav-link" href="student-dashboard.html"><i class="fa-solid fa-house"></i><span>Overview</span></a>
+<a class="nav-link" href="schedules.html"><i class="fa-solid fa-calendar-days"></i><span>Schedules</span></a>
+<a class="nav-link" href="academics.html"><i class="fa-solid fa-book-open"></i><span>Academics</span></a>
+<a class="nav-link" href="student-services.html"><i class="fa-solid fa-handshake-angle"></i><span>Student services</span></a>
+<a class="nav-link" href="policies-forms.html"><i class="fa-solid fa-shield-halved"></i><span>Policies and forms</span></a>
+<a class="nav-link" href="campus-life.html"><i class="fa-solid fa-people-group"></i><span>Campus life</span></a>
+<a class="nav-link active" href="help-support.html"><i class="fa-solid fa-circle-question"></i><span>Help and support</span></a>
+</nav>
+<div class="help-card">
+<h3>Need some help?</h3><p>Find answers or contact the student support team.</p>
+<a class="help-action" href="help-support.html">Visit help centre</a>
+</div>
+<div class="sidebar-footer">© IIT 2026 · All rights reserved</div>
+</aside>
+<main class="main-content resource-main">
+<section class="resource-hero">
+<div class="hero-copy"><h1>Help and support</h1><p>Find quick answers, useful contacts, platform guidance, and the right team to assist you.</p></div>
+</section>
+<div class="resource-toolbar">
+<p><strong>9</strong> available resources</p>
+</div>
+<section aria-label="Help &amp; support resources" class="page-resource-grid">
+<article class="resource-card page-resource-card">
+<div class="resource-title">
+<span class="resource-icon"><i class="fa-solid fa-life-ring"></i></span>
+<div><h2>Get help</h2><p>Find the right contact for academic or student support.</p></div>
+</div>
+<div class="resource-links"><button class="resource-item" data-resource-item="" type="button"><span>Academia FAQ</span></button>
+<button class="resource-item" data-resource-item="" type="button"><span>Important contact details</span></button>
+<button class="resource-item" data-resource-item="" type="button"><span>Info</span></button></div>
+</article>
+<article class="resource-card page-resource-card">
+<div class="resource-title">
+<span class="resource-icon"><i class="fa-solid fa-headset"></i></span>
+<div><h2>Technical support</h2><p>Guidance for IIT systems and online learning services.</p></div>
+</div>
+<div class="resource-links"><button class="resource-item" data-resource-item="" type="button"><span>Help desk video series</span></button>
+<button class="resource-item" data-resource-item="" type="button"><span>LMS login details</span></button>
+<button class="resource-item" data-resource-item="" type="button"><span>IT policy</span></button></div>
+</article>
+<article class="resource-card page-resource-card">
+<div class="resource-title">
+<span class="resource-icon"><i class="fa-solid fa-comments"></i></span>
+<div><h2>Student relations</h2><p>Support with student experience, feedback, and concerns.</p></div>
+</div>
+<div class="resource-links"><button class="resource-item" data-resource-item="" type="button"><span>Student Relations Unit</span></button>
+<button class="resource-item" data-resource-item="" type="button"><span>Student complaints</span></button>
+<button class="resource-item" data-resource-item="" type="button"><span>Facility and support system</span></button></div>
+</article>
+</section>
+<footer class="main-footer"><span>© IIT 2026 · All rights reserved</span><span>Informatics Institute of Technology <b>Student intranet</b></span></footer>
+</main>
+</div>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<script src="shell.js"></script>
+<script src="student-pages.js"></script>
+</body>
+</html>
