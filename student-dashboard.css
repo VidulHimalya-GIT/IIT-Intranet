@@ -89,3 +89,6 @@ button.notice-item{font:inherit;text-align:left;cursor:pointer;width:100%;color:
 
 /* 16px stops phone browsers zooming in when the search box is tapped. */
 @media (max-width:800px){.top-search input{font-size:16px}}
+
+/* Hide the page scroll bar; scrolling still works. */
+html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
