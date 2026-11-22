@@ -6,18 +6,19 @@ The pages are plain HTML, CSS and JavaScript. Sign-in is simulated, so any email
 
 ## Run it
 
-Open the folder in VS Code and start `iit_intranet_portal.html` with Live Server, or serve the folder with any static server:
+Open the folder in VS Code and start `index.html` with Live Server, or serve the folder with any static server:
 
 ```
 python -m http.server 5510
 ```
 
-Then open http://localhost:5510/iit_intranet_portal.html.
+Then open http://localhost:5510/. The landing page links to the sign-in page, and Sign out returns to the landing page.
 
 ## Pages
 
 | Page | File |
 | --- | --- |
+| Landing page | `index.html` (screenshots in `screenshots/`) |
 | Sign in | `iit_intranet_portal.html` |
 | Overview | `student-dashboard.html` |
 | Schedules and calendars | `schedules.html` |

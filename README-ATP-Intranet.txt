@@ -22,7 +22,7 @@ HOW TO RUN
 4. Use the demo Google sign-in or student email sign-in.
 5. After successful demo sign-in, the browser opens student-dashboard.html.
 6. Use the left Student Intranet menu to open each separate page.
-7. Use Sign out to return to the login page.
+7. Use Sign out to return to the landing page.
 
 NAVIGATION
 The left sidebar links to seven separate HTML pages:
@@ -34,7 +34,7 @@ RESOURCE PAGE BEHAVIOUR
 - The global search and page search filter the resource categories on the current page.
 - Notification buttons show a small demo message.
 - Only the sidebar navigates between the seven student pages.
-- Sign out returns to the login page.
+- Sign out returns to the landing page (index.html).
 
 IMPORTANT
 This is a front-end prototype. The login flow is simulated for demonstration

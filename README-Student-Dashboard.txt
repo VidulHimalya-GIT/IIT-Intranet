@@ -11,11 +11,11 @@ How to run:
 1. Keep all files in this same folder.
 2. Open iit_intranet_portal.html in a browser (or use VS Code Live Server).
 3. Complete the login form. The demo login success flow redirects to student-dashboard.html.
-4. Use the Sign out link on the dashboard to return to iit_intranet_portal.html.
+4. Use the Sign out link on the dashboard to return to index.html (the landing page).
 
 Navigation behaviour:
 - Only the left Student Intranet menu navigates/scrolls within the dashboard.
-- Sign out returns to the login page.
+- Sign out returns to the landing page (index.html).
 - Dashboard cards, notices, quick links, resource items and programme items are clickable controls but do not open another page or scroll.
 - Search shows feedback without scrolling the page.
 
