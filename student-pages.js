@@ -40,8 +40,15 @@ clearButton.hidden = true;
 status?.after(clearButton);
 status?.setAttribute('aria-live', 'polite');
 
+const resourceGrid = document.querySelector('.page-resource-grid');
+
 function filterResources(query) {
   const normalized = query.trim().toLowerCase();
+  // Hold the grid at its full height while searching, so hiding cards doesn't shrink the page and pull the view up.
+  if (resourceGrid) {
+    if (normalized && !resourceGrid.style.minHeight) resourceGrid.style.minHeight = `${resourceGrid.offsetHeight}px`;
+    if (!normalized) resourceGrid.style.minHeight = '';
+  }
   let visibleItems = 0;
   document.querySelectorAll('.page-resource-card').forEach((card) => {
     // A match on the card's own title or description shows all of its links.
