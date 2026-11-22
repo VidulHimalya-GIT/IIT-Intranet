@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IIT Intranet · A redesigned student portal</title>
+<meta name="description" content="A front-end prototype of a redesigned student intranet for the Informatics Institute of Technology, Sri Lanka.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+<style>
+:root{--red:#C41230;--red-dark:#A30F27;--dark:#16181A;--gold:#C5A059;--ink:#202226;--muted:#5f656e;--line:#e5e6e8;--paper:#f4f5f6;--shadow:0 12px 32px rgba(20,22,25,.08)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--red);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;letter-spacing:-.02em;line-height:1.15;margin:0;text-wrap:balance}
+p{text-wrap:pretty}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 22px;border-radius:10px;font-weight:600;font-size:15px;white-space:nowrap;transition:background .2s}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-dark)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.topbar :focus-visible,.light :focus-visible,.changes :focus-visible,#faq :focus-visible{outline-color:var(--dark)}
+
+/* Top bar (same as the portal); holds the page's one demo button so it stays in reach while scrolling */
+.topbar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.topbar .wrap{height:72px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto}
+.brand img{width:36px;height:44px;object-fit:contain}
+.brand span{font-size:12px;line-height:1.22;letter-spacing:.055em;font-weight:700;color:#222}
+.brand b{color:var(--red)}
+.nav{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--muted)}
+.nav a:hover,.nav a[aria-current]{color:var(--red)}
+
+/* Hero (dark, like the sign-in page): old intranet behind, new dashboard in front */
+.hero{background:var(--dark);color:#fff;overflow:hidden;padding:0}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.2fr);gap:56px;align-items:center;padding-top:64px;padding-bottom:80px}
+.hero h1{font-size:clamp(40px,4.4vw,56px);margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:#c4c7cc;font-size:18px;max-width:500px;margin:0}
+.hero .start{margin-top:28px;padding:18px 20px;border:1px solid rgba(197,160,89,.35);border-radius:12px;background:rgba(197,160,89,.08);max-width:460px;font-size:15px;color:#e6e7e9}
+.start strong{color:#fff}
+.start i{color:var(--gold);margin-right:8px}
+.text-link{display:inline-flex;gap:8px;align-items:center;margin-top:20px;font-size:15px;font-weight:600;color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:5px}
+.text-link:hover{text-decoration-color:#fff}
+.stack{position:relative;padding:0 0 30% 0}
+.stack .old{width:72%}
+.stack .new{position:absolute;width:70%;right:0;bottom:0}
+.callout{position:absolute;z-index:1;top:22%;left:21%;display:flex;gap:8px;align-items:center;font-size:13px;font-weight:700;color:var(--dark);background:var(--gold);padding:5px 12px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.tag{position:absolute;top:-14px;right:16px;z-index:1;font-size:12px;font-weight:700;letter-spacing:.04em;padding:3px 10px;border-radius:6px}
+.old .tag{background:#3a3d42;color:#e6e7e9}
+.new .tag{background:var(--gold);color:var(--dark)}
+
+/* Browser frame around screenshots */
+.frame{position:relative;background:#fff;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.08)}
+.frame>a{display:block;border-radius:0 0 12px 12px;overflow:hidden;cursor:zoom-in}
+.frame-bar{height:32px;background:#eceef0;display:flex;align-items:center;gap:6px;padding:0 12px;border-radius:12px 12px 0 0}
+.frame-bar i{width:9px;height:9px;border-radius:50%;background:#c9ccd1}
+.frame-bar span{margin-left:10px;font-size:12px;color:var(--muted);background:#fff;border-radius:5px;padding:2px 10px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.frame-bar em{margin-left:auto;font-style:normal;font-size:12px;color:var(--muted);white-space:nowrap}
+.light .frame{box-shadow:var(--shadow);border-color:var(--line)}
+
+/* Sections */
+section{padding:96px 0}
+.intro{max-width:680px;margin-bottom:48px}
+.intro h2{font-size:clamp(30px,3.6vw,42px);margin-bottom:14px}
+.intro p{color:var(--muted);margin:0}
+
+.changes{background:#fff;border-bottom:1px solid var(--line)}
+.compare{width:100%;border-collapse:collapse;font-size:16px}
+.compare th,.compare td{text-align:left;padding:18px 20px;border-bottom:1px solid var(--line);vertical-align:top}
+.compare thead th{font-size:13px;font-weight:700;color:var(--muted);border-bottom:2px solid var(--ink)}
+.compare thead th:last-child{color:var(--red)}
+.compare tbody th{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:600;width:24%}
+.compare td{color:var(--muted);width:38%}
+.compare td:last-child{color:var(--ink);font-weight:500}
+.compare td:last-child i{color:var(--red);margin-right:8px}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.source{font-size:13px;color:var(--muted);margin:16px 0 0}
+
+.tour{display:grid;gap:88px}
+.shot{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:48px;align-items:center}
+.shot:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.9fr)}
+.shot:nth-child(even) .frame{order:2}
+.shot.wide{grid-template-columns:minmax(0,1fr);gap:28px}
+.shot.wide>div:last-child{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:48px;align-items:baseline;order:-1}
+.shot h3{font-size:28px;margin-bottom:12px}
+.shot p{color:var(--muted);margin:0}
+.shot.wide p{max-width:640px}
+
+.faq-list{max-width:780px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--red);font-size:20px;line-height:1}
+details[open] summary:after{content:"−"}
+details p{color:var(--muted);margin:12px 0 0;font-size:15px}
+
+footer{background:var(--dark);color:#a9adb3;font-size:14px;padding:48px 0}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr;gap:32px}
+footer h4{color:var(--gold);font-size:13px;font-weight:600;margin:0 0 14px}
+footer a:hover{color:#fff}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+footer p{margin:0 0 12px;max-width:440px}
+footer .demo-link{color:#fff;font-weight:600;text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:4px}
+.foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.foot-brand img{width:34px;height:40px;object-fit:contain;background:#fff;border-radius:8px;padding:4px}
+.foot-brand span{color:#fff;font-weight:600}
+
+/* Full-size screenshot viewer */
+dialog{padding:0;border:0;border-radius:12px;background:var(--dark);max-width:min(1440px,96vw);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(10,11,12,.85)}
+dialog img{max-height:86vh;width:auto;margin:0 auto}
+.viewer-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 12px 10px 18px;color:#e6e7e9;font-size:14px}
+.viewer-bar button{font:inherit;font-weight:600;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.3);border-radius:8px;height:36px;padding:0 14px;cursor:pointer}
+.viewer-bar button:hover{border-color:#fff}
+
+@media(max-width:900px){
+  .hero .wrap,.shot,.shot:nth-child(even),.shot.wide>div:last-child{grid-template-columns:minmax(0,1fr);gap:36px}
+  .shot.wide>div:last-child{gap:12px}
+  .shot:nth-child(even) .frame{order:0}
+  .compare tbody th{width:auto}
+}
+@media(max-width:640px){
+  .nav{display:none}
+  .topbar .wrap{gap:12px}
+  .topbar .btn{height:40px;padding:0 14px;font-size:14px}
+  .brand span{font-size:11px;letter-spacing:.03em}
+  section{padding:64px 0}
+  .hero .wrap{padding-top:48px;padding-bottom:56px}
+  .tour{gap:64px}
+  .frame-bar em span{display:none}
+  .compare thead{display:none}
+  .compare tr{display:grid;padding:16px 0;border-bottom:1px solid var(--line)}
+  .compare th,.compare td{padding:4px 0;border:0;width:auto}
+  .compare td:nth-of-type(1):before{content:"Before: ";font-weight:600}
+  .compare td:nth-of-type(2):before{content:"After: ";font-weight:600;color:var(--red)}
+  footer .wrap{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:380px){.brand span{display:none}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="#top" class="brand"><img src="IIT_Logo.png" alt=""><span>INFORMATICS<br>INSTITUTE OF<br><b>TECHNOLOGY</b></span></a>
+    <nav class="nav" aria-label="Page sections">
+      <a href="#changes">What changed</a>
+      <a href="#tour">Tour</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="iit_intranet_portal.html" class="btn btn-red">Try the live demo <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>From fifty links to <em>one dashboard.</em></h1>
+        <p>IIT Intranet is a redesigned student portal for the Informatics Institute of Technology. Today's classes, deadlines and notices come first, with timetables, module resources and UoW and RGU forms one click away.</p>
+        <p class="start"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>Press <strong>Try the live demo</strong> at the top of the page and sign in with any email and password.</p>
+        <a href="#changes" class="text-link">See what changed <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+      </div>
+      <div class="stack">
+        <div class="frame old">
+          <span class="tag">Before</span>
+          <div class="frame-bar"><i></i><i></i><i></i><span>in.iit.ac.lk</span><em><i class="fa-solid fa-expand" aria-hidden="true"></i></em></div>
+          <span class="callout" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i>About 50 links</span>
+          <a href="screenshots/old-intranet.webp"><img src="screenshots/old-intranet.webp" alt="The current IIT intranet: a long sidebar of links beside the general notices area" width="1440" height="900"></a>
+        </div>
+        <div class="frame new">
+          <span class="tag">After</span>
+          <div class="frame-bar"><i></i><i></i><i></i><span>Overview · IIT Intranet</span><em><i class="fa-solid fa-expand" aria-hidden="true"></i></em></div>
+          <a href="screenshots/student-dashboard.webp"><img src="screenshots/student-dashboard.webp" alt="The prototype's student dashboard with today's classes, latest notices and quick links" width="1440" height="900"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="changes" class="changes">
+    <div class="wrap">
+      <div class="intro">
+        <h2>What changed</h2>
+        <p>The current intranet lists every resource in one sidebar. The prototype sorts them into an overview and six sections.</p>
+      </div>
+      <table class="compare">
+        <thead><tr><th scope="col"><span class="visually-hidden">Area</span></th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Finding things</th><td>About 50 links in a single sidebar</td><td><i class="fa-solid fa-layer-group" aria-hidden="true"></i>An overview and six sections</td></tr>
+          <tr><th scope="row">Search</th><td>No search box</td><td><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>Search on every page that filters as you type</td></tr>
+          <tr><th scope="row">Today</th><td>A general notices page</td><td><i class="fa-solid fa-calendar-day" aria-hidden="true"></i>Today's classes, deadlines and notices on the dashboard</td></tr>
+          <tr><th scope="row">Reading</th><td>12px menu links</td><td><i class="fa-solid fa-universal-access" aria-hidden="true"></i>14px menu links, stronger contrast, keyboard-friendly pop-ups</td></tr>
+        </tbody>
+      </table>
+      <p class="source">Current intranet as seen at in.iit.ac.lk on 22 November 2026.</p>
+    </div>
+  </section>
+
+  <section id="tour" class="light">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Inside the portal</h2>
+        <p>The dashboard, the sign-in page and three of the six sections. Select a screenshot to see it full size.</p>
+      </div>
+
+      <div class="tour">
+        <article class="shot wide">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span>Overview · IIT Intranet</span><em><i class="fa-solid fa-expand" aria-hidden="true"></i><span> Select to enlarge</span></em></div>
+            <a href="screenshots/student-dashboard.webp"><img src="screenshots/student-dashboard.webp" alt="Student dashboard with today's classes, the latest notices and quick links" width="1440" height="900" loading="lazy"></a>
+          </div>
+          <div>
+            <h3>One dashboard for today</h3>
+            <p>The overview opens on what matters now: the day's classes with times and rooms, coursework deadlines, the latest notices, and shortcuts to the timetable, assessment schedule, academic calendar and LMS.</p>
+          </div>
+        </article>
+
+        <article class="shot">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span>Sign in · IIT Intranet</span><em><i class="fa-solid fa-expand" aria-hidden="true"></i><span> Select to enlarge</span></em></div>
+            <a href="screenshots/iit_intranet_portal.webp"><img src="screenshots/iit_intranet_portal.webp" alt="Sign-in page with Google and student email sign-in" width="1440" height="900" loading="lazy"></a>
+          </div>
+          <div>
+            <h3>Sign in</h3>
+            <p>Google or a student email gets you in. Forgot password opens a reset form you can try.</p>
+          </div>
+        </article>
+
+        <article class="shot">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span>Schedules and calendars · IIT Intranet</span><em><i class="fa-solid fa-expand" aria-hidden="true"></i><span> Select to enlarge</span></em></div>
+            <a href="screenshots/schedules.webp"><img src="screenshots/schedules.webp" alt="Schedules and calendars page" width="1440" height="900" loading="lazy"></a>
+          </div>
+          <div>
+            <h3>Schedules and calendars</h3>
+            <p>Class timetables, temporary changes, assessment schedules and annual events, which the current intranet spreads across separate sidebar links, sit together on one page.</p>
+          </div>
+        </article>
+
+        <article class="shot">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span>Academic resources · IIT Intranet</span><em><i class="fa-solid fa-expand" aria-hidden="true"></i><span> Select to enlarge</span></em></div>
+            <a href="screenshots/academics.webp"><img src="screenshots/academics.webp" alt="Academic resources page" width="1440" height="900" loading="lazy"></a>
+          </div>
+          <div>
+            <h3>Academic resources</h3>
+            <p>Every degree, from BSc AI and Data Science to the MSc programmes and the foundation year, is grouped by level of study instead of listed one by one.</p>
+          </div>
+        </article>
+
+        <article class="shot">
+          <div class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span>Policies and forms · IIT Intranet</span><em><i class="fa-solid fa-expand" aria-hidden="true"></i><span> Select to enlarge</span></em></div>
+            <a href="screenshots/policies-forms.webp"><img src="screenshots/policies-forms.webp" alt="Policies and forms page" width="1440" height="900" loading="lazy"></a>
+          </div>
+          <div>
+            <h3>Policies and forms</h3>
+            <p>University of Westminster (UoW) and Robert Gordon University (RGU) forms get a card each, so a student on an RGU degree never opens a UoW mitigation form by mistake.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+        <details open><summary>Is this the real IIT intranet?</summary><p>No. It is a front-end prototype built for the 5COSC021C Agile Team Project at the University of Westminster. Sign-in is simulated and does not check real IIT credentials.</p></details>
+        <details><summary>How do I sign in to the demo?</summary><p>Press Try the live demo and use any email and password, or the Google button. You land on the student dashboard. Sign out brings you back to this page.</p></details>
+        <details><summary>Do the document links open real files?</summary><p>Not yet. Resource and form links show a short message instead of opening a document. The sidebar moves between the seven pages.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="foot-brand"><img src="IIT_Logo.png" alt=""><span>IIT Intranet</span></div>
+      <p>A student project prototype for the Informatics Institute of Technology, Sri Lanka. Not an official IIT&nbsp;service.</p>
+      <a href="iit_intranet_portal.html" class="demo-link">Sign in</a>
+    </div>
+    <div>
+      <h4>This page</h4>
+      <ul>
+        <li><a href="#changes">What changed</a></li>
+        <li><a href="#tour">Tour</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<dialog id="viewer" aria-label="Screenshot viewer">
+  <div class="viewer-bar"><span id="viewer-title"></span><button type="button" id="viewer-close">Close</button></div>
+  <img id="viewer-img" alt="">
+</dialog>
+
+<script>
+// Highlight the nav link for the section in view.
+const links = document.querySelectorAll('.nav a');
+const sections = [...document.querySelectorAll('main > section')];
+function markCurrent() {
+  const line = innerHeight * 0.4;
+  const current = sections.filter(s => s.getBoundingClientRect().top <= line).pop();
+  links.forEach(a => current && a.hash === '#' + current.id ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
+}
+addEventListener('scroll', markCurrent, { passive: true });
+markCurrent();
+
+// Open screenshots full size; without JS the link opens the image itself.
+const viewer = document.getElementById('viewer');
+const viewerImg = document.getElementById('viewer-img');
+document.querySelectorAll('.frame > a').forEach(a => a.setAttribute('aria-label', a.querySelector('img').getAttribute('alt') + ' (opens full size)'));
+document.querySelectorAll('.frame > a').forEach(a => a.addEventListener('click', e => {
+  if (!viewer.showModal) return;
+  e.preventDefault();
+  const img = a.querySelector('img');
+  viewerImg.src = a.href;
+  viewerImg.alt = img.alt;
+  document.getElementById('viewer-title').textContent = a.closest('.frame').querySelector('.frame-bar span').textContent;
+  viewer.showModal();
+}));
+document.getElementById('viewer-close').addEventListener('click', () => viewer.close());
+viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
+</script>
+</body>
+</html>

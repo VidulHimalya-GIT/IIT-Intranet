@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IIT Intranet · Student Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="vendor/fontawesome/css/all.min.css" rel="stylesheet"/>
+<link href="student-dashboard.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="topbar">
+<button aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation" class="mobile-menu" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+<div aria-label="IIT Student Intranet" class="brand"><img alt="IIT logo" src="IIT_Logo.png"/><span>INFORMATICS<br/>INSTITUTE OF<br/><b>TECHNOLOGY</b></span></div>
+<div class="top-search"><i class="fa-solid fa-magnifying-glass"></i><input aria-label="Search this page" id="globalSearch" placeholder="Search this page…" type="search"/></div>
+<div class="top-actions">
+<button aria-label="Notifications" class="icon-button" id="notificationButton"><i class="fa-regular fa-bell"></i></button>
+<div class="account"><div class="avatar">SA</div><div class="account-info"><strong>Student Account</strong><small>2026/27</small></div><a class="signout" href="index.html">Sign out</a></div>
+</div>
+</header>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<nav aria-label="Main navigation" class="side-nav">
+<a class="nav-link active" href="student-dashboard.html"><i class="fa-solid fa-house"></i><span>Overview</span></a>
+<a class="nav-link" href="schedules.html"><i class="fa-solid fa-calendar-days"></i><span>Schedules</span></a>
+<a class="nav-link" href="academics.html"><i class="fa-solid fa-book-open"></i><span>Academics</span></a>
+<a class="nav-link" href="student-services.html"><i class="fa-solid fa-handshake-angle"></i><span>Student services</span></a>
+<a class="nav-link" href="policies-forms.html"><i class="fa-solid fa-shield-halved"></i><span>Policies and forms</span></a>
+<a class="nav-link" href="campus-life.html"><i class="fa-solid fa-people-group"></i><span>Campus life</span></a>
+<a class="nav-link" href="help-support.html"><i class="fa-solid fa-circle-question"></i><span>Help and support</span></a>
+</nav>
+<div class="help-card"><h3>Need some help?</h3><p>Find answers or contact the student support team.</p><a class="help-action" href="help-support.html">Visit help centre</a></div>
+<div class="sidebar-footer">© IIT 2026 · All rights reserved</div>
+</aside>
+<main class="main-content" id="overview">
+<section class="welcome-row">
+<div><h1 id="greeting">Good morning</h1><p class="welcome-copy">Everything you need for your academic journey, all in one place.</p></div>
+<div class="date-panel"><div><small>Today</small><strong id="todayDate">21 November 2026</strong></div></div>
+</section>
+<section class="dashboard-columns">
+<div class="panel week-panel">
+<div class="panel-heading"><div><h2>Coming up</h2></div><a class="view-all" href="schedules.html">Full schedule</a></div>
+<div class="timeline">
+<div class="timeline-item red-dot"><div class="event-time">10:00 – 11:30</div><strong>Artificial Intelligence</strong><small>Level 3 · Lab 02</small></div>
+<div class="timeline-item gold-dot"><div class="event-time">13:00 – 14:30</div><strong>Software Engineering</strong><small>Level 4 · Room 401</small></div>
+<div class="timeline-item dark-dot"><div class="event-time">16:00 deadline</div><strong>Coursework submission</strong><small>Data Structures · LMS</small></div>
+</div>
+</div>
+<div class="panel notices-panel">
+<div class="panel-heading"><div><h2>Latest notices</h2></div></div>
+<div class="notice-list">
+<button class="notice-item" data-dashboard-action="" type="button"><span class="notice-date"><b>24</b><small>SEP</small></span><span class="notice-content"><small class="category">Academic</small><strong>Semester 01 registration is now open</strong><small class="muted">24 September</small></span></button>
+<button class="notice-item" data-dashboard-action="" type="button"><span class="notice-date"><b>19</b><small>SEP</small></span><span class="notice-content"><small class="category">Assessment</small><strong>Updated assessment schedule published</strong><small class="muted">18 September</small></span></button>
+<button class="notice-item" data-dashboard-action="" type="button"><span class="notice-date"><b>12</b><small>SEP</small></span><span class="notice-content"><small class="category">Student life</small><strong>Orientation week: what you need to know</strong><small class="muted">12 September</small></span></button>
+</div>
+</div>
+</section>
+<section aria-label="Quick links" class="quick-grid">
+<a class="quick-card" href="schedules.html"><span class="quick-icon red"><i class="fa-solid fa-clock"></i></span><span class="quick-text"><b>Timetable</b><small>View weekly classes</small></span><i class="fa-solid fa-chevron-right arrow"></i></a>
+<a class="quick-card" href="schedules.html"><span class="quick-icon gold"><i class="fa-solid fa-clipboard-check"></i></span><span class="quick-text"><b>Assessment schedule</b><small>Deadlines and exams</small></span><i class="fa-solid fa-chevron-right arrow"></i></a>
+<a class="quick-card" href="schedules.html"><span class="quick-icon dark"><i class="fa-solid fa-calendar-check"></i></span><span class="quick-text"><b>Academic calendar</b><small>Key dates for 2026/27</small></span><i class="fa-solid fa-chevron-right arrow"></i></a>
+<a class="quick-card" href="help-support.html"><span class="quick-icon red"><i class="fa-solid fa-right-to-bracket"></i></span><span class="quick-text"><b>LMS login details</b><small>Access learning platforms</small></span><i class="fa-solid fa-chevron-right arrow"></i></a>
+</section>
+<section class="resources-section">
+<div class="section-heading"><div><h2>Resources and services</h2></div><p>Frequently used information, organised by category.</p></div>
+<div class="resource-grid">
+<article class="resource-card"><div class="resource-title"><h3>Schedules and calendars</h3></div><div class="resource-links"><button data-dashboard-action="" type="button">Schedules</button><button data-dashboard-action="" type="button">Orientation</button><button data-dashboard-action="" type="button">Temporary</button><button data-dashboard-action="" type="button">Assessments</button></div><a class="resource-all" href="schedules.html">View all 9 resources</a></article>
+<article class="resource-card"><div class="resource-title"><h3>Academic resources</h3></div><div class="resource-links"><button data-dashboard-action="" type="button">Academic course delivery</button><button data-dashboard-action="" type="button">Programme specification</button><button data-dashboard-action="" type="button">Course details</button><button data-dashboard-action="" type="button">UoW</button></div><a class="resource-all" href="academics.html">View all 27 resources</a></article>
+<article class="resource-card"><div class="resource-title"><h3>Student services</h3></div><div class="resource-links"><button data-dashboard-action="" type="button">Student complaints</button><button data-dashboard-action="" type="button">Facility and support system</button><button data-dashboard-action="" type="button">Important contact details</button><button data-dashboard-action="" type="button">Student Relations Unit</button></div><a class="resource-all" href="student-services.html">View all 6 resources</a></article>
+<article class="resource-card"><div class="resource-title"><h3>Policies and forms</h3></div><div class="resource-links"><button data-dashboard-action="" type="button">Student policies</button><button data-dashboard-action="" type="button">Code of conduct</button><button data-dashboard-action="" type="button">Club policy</button><button data-dashboard-action="" type="button">IT policy</button></div><a class="resource-all" href="policies-forms.html">View all 11 resources</a></article>
+<article class="resource-card"><div class="resource-title"><h3>Campus life</h3></div><div class="resource-links"><button data-dashboard-action="" type="button">Houses</button><button data-dashboard-action="" type="button">Students' Union</button><button data-dashboard-action="" type="button">Clubs and societies</button><button data-dashboard-action="" type="button">Participation at conferences</button></div><a class="resource-all" href="campus-life.html">View all 7 resources</a></article>
+<article class="resource-card"><div class="resource-title"><h3>Information and help</h3></div><div class="resource-links"><button data-dashboard-action="" type="button">Info</button><button data-dashboard-action="" type="button">Academia FAQ</button><button data-dashboard-action="" type="button">LMS login details</button></div><a class="resource-all" href="help-support.html">View all 9 resources</a></article>
+</div>
+</section>
+<section class="programmes"><div class="programmes-intro"><h2>Find your course resources</h2><p>Access programme specifications, module details, calendars, and course-specific information.</p></div><div class="programme-column"><h3>Undergraduate</h3><button data-dashboard-action="" type="button">BSc AI and DS</button><button data-dashboard-action="" type="button">BEng AI and DE</button><button data-dashboard-action="" type="button">BSc CS</button><button data-dashboard-action="" type="button">BEng SE</button><button data-dashboard-action="" type="button">BSc BDA</button><button data-dashboard-action="" type="button">BSc BIS</button><button data-dashboard-action="" type="button">BA BM</button><button data-dashboard-action="" type="button">BSc BC</button><button data-dashboard-action="" type="button">BSc FTDA</button></div><div class="programme-column"><h3>Postgraduate</h3><button data-dashboard-action="" type="button">MSc ASE</button><button data-dashboard-action="" type="button">MSc CS and F</button><button data-dashboard-action="" type="button">MSc IT</button><button data-dashboard-action="" type="button">MSc BDA</button><button data-dashboard-action="" type="button">MSc AIE</button><button data-dashboard-action="" type="button">MSc BA</button><button data-dashboard-action="" type="button">MA in FBM</button><button data-dashboard-action="" type="button">MSc AAI</button></div><div class="programme-column"><h3>Foundation programme</h3><button data-dashboard-action="" type="button">Academic calendar</button><button data-dashboard-action="" type="button">Programme specification</button><button data-dashboard-action="" type="button">Important contact details</button><button data-dashboard-action="" type="button">Timetable</button><button data-dashboard-action="" type="button">Assessment schedule</button></div></section>
+<footer class="main-footer"><span>© IIT 2026 · Informatics Institute of Technology Sri Lanka</span><span>Student intranet <b>2026/27</b></span></footer>
+</main>
+</div>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<script src="shell.js"></script>
+<script src="student-dashboard.js"></script>
+</body>
+</html>
