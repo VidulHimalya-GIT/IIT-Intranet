@@ -35,6 +35,8 @@ Icons are Font Awesome 6.4.0, stored in `vendor/fontawesome`. The sign-in page u
 npx tailwindcss@3.4.17 -o portal.css --minify
 ```
 
-## Credits
+## Contributors
 
-UI by Sanuka and Jithvin. Accessibility, layout and design fixes by Vidul Himalya.
+- **Jithvin** designed and built the sign-in page (`iit_intranet_portal.html`).
+- **Sanuka and Jithvin** designed and built the rest of the portal: the overview dashboard, the six section pages, the sidebar and top bar, and the page styling and scripts.
+- **Vidul Himalya** made accessibility, layout and design fixes: working search, keyboard-friendly pop-ups, the phone menu, offline icons and styling, larger text and better contrast, and a cleaner dashboard.
