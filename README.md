@@ -4,6 +4,8 @@ Front-end prototype of a redesigned student intranet for the Informatics Institu
 
 The pages are plain HTML, CSS and JavaScript. Sign-in is simulated, so any email and password opens the dashboard, and document links only show a message for now.
 
+**Live demo:** https://iit-intranet.vercel.app
+
 ## Run it
 
 Open the folder in VS Code and start `index.html` with Live Server, or serve the folder with any static server:
