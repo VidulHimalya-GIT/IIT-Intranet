@@ -5,6 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IIT Intranet · A redesigned student portal</title>
 <meta name="description" content="A front-end prototype of a redesigned student intranet for the Informatics Institute of Technology, Sri Lanka.">
+<!-- Update the site URL in these tags when the team domain is connected. -->
+<link rel="canonical" href="https://iit-intranet.vercel.app/">
+<link rel="icon" type="image/png" href="IIT_Logo.png">
+<link rel="apple-touch-icon" href="IIT_Logo.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IIT Intranet">
+<meta property="og:title" content="IIT Intranet: from fifty links to one dashboard">
+<meta property="og:description" content="A redesigned student portal for the Informatics Institute of Technology. Try the live prototype.">
+<meta property="og:url" content="https://iit-intranet.vercel.app/">
+<meta property="og:image" content="https://iit-intranet.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="IIT Intranet headline beside the prototype's student dashboard">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IIT Intranet: from fifty links to one dashboard">
+<meta name="twitter:description" content="A redesigned student portal for the Informatics Institute of Technology. Try the live prototype.">
+<meta name="twitter:image" content="https://iit-intranet.vercel.app/og-image.png">
+<meta name="theme-color" content="#16181A">
+<!-- Vercel Web Analytics: counts visits without cookies once Analytics is turned on for the project. -->
+<script defer src="/_vercel/insights/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -101,8 +121,41 @@ summary:after{content:"+";color:var(--red);font-size:20px;line-height:1}
 details[open] summary:after{content:"−"}
 details p{color:var(--muted);margin:12px 0 0;font-size:15px}
 
+.team{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.people{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.people li{display:flex;gap:16px;align-items:center;padding:20px;border:1px solid var(--line);border-radius:12px}
+.avatar{width:52px;height:52px;flex-shrink:0;border-radius:12px;background:var(--dark);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;letter-spacing:.02em}
+.people li:nth-child(3n+2) .avatar{background:var(--red)}
+.people li:nth-child(3n) .avatar{background:var(--gold);color:var(--dark)}
+.people h3{font-family:Inter,Arial,sans-serif;font-size:17px;font-weight:700;letter-spacing:0;margin:0 0 2px}
+.people p{margin:0;color:var(--muted);font-size:15px}
+
+.waitlist .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.waitlist .intro{margin-bottom:0}
+.count{margin:20px 0 0;font-weight:600;color:var(--ink)}
+.count strong{color:var(--red);font-size:22px}
+.signup{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;display:grid;gap:18px;box-shadow:var(--shadow)}
+.field{display:grid;gap:6px}
+.field label{font-size:14px;font-weight:600}
+.field label span{font-weight:400;color:var(--muted)}
+.signup input[type=text],.signup input[type=email],.signup select{font:inherit;font-size:16px;color:var(--ink);height:48px;padding:0 14px;border:1px solid #cfd2d6;border-radius:10px;background:#fff;width:100%}
+.signup input:focus-visible,.signup select:focus-visible{outline:3px solid var(--dark);outline-offset:1px}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--muted)}
+.consent input{width:20px;height:20px;margin-top:1px;flex-shrink:0;accent-color:var(--red)}
+.consent a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.signup .btn{border:0;cursor:pointer;justify-content:center;font:inherit;font-weight:600}
+.signup .btn[disabled]{opacity:.6;cursor:wait}
+.form-status{margin:0;font-size:15px;min-height:1.6em}
+.form-status.ok{color:#137a4a;font-weight:600}
+.form-status.err{color:var(--red-dark);font-weight:600}
+
+.privacy-text{max-width:780px;color:var(--muted)}
+.privacy-text p{margin:0 0 14px}
+.privacy-text a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+
 footer{background:var(--dark);color:#a9adb3;font-size:14px;padding:48px 0}
-footer .wrap{display:grid;grid-template-columns:2fr 1fr;gap:32px}
+footer .wrap{display:grid;grid-template-columns:2fr 1.2fr 1fr;gap:32px}
 footer h4{color:var(--gold);font-size:13px;font-weight:600;margin:0 0 14px}
 footer a:hover{color:#fff}
 footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
@@ -125,6 +178,9 @@ dialog img{max-height:86vh;width:auto;margin:0 auto}
   .shot.wide>div:last-child{gap:12px}
   .shot:nth-child(even) .frame{order:0}
   .compare tbody th{width:auto}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .waitlist .wrap{grid-template-columns:minmax(0,1fr);gap:32px}
+  footer .wrap{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
   .nav{display:none}
@@ -140,6 +196,8 @@ dialog img{max-height:86vh;width:auto;margin:0 auto}
   .compare th,.compare td{padding:4px 0;border:0;width:auto}
   .compare td:nth-of-type(1):before{content:"Before: ";font-weight:600}
   .compare td:nth-of-type(2):before{content:"After: ";font-weight:600;color:var(--red)}
+  .people{grid-template-columns:minmax(0,1fr)}
+  .signup{padding:22px}
   footer .wrap{grid-template-columns:minmax(0,1fr)}
 }
 @media(max-width:380px){.brand span{display:none}}
@@ -153,6 +211,8 @@ dialog img{max-height:86vh;width:auto;margin:0 auto}
     <nav class="nav" aria-label="Page sections">
       <a href="#changes">What changed</a>
       <a href="#tour">Tour</a>
+      <a href="#team">Team</a>
+      <a href="#waitlist">Waitlist</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a href="iit_intranet_portal.html" class="btn btn-red">Try the live demo <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
@@ -269,6 +329,55 @@ dialog img{max-height:86vh;width:auto;margin:0 auto}
     </div>
   </section>
 
+  <section id="team" class="team">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Six students built IIT Intranet</h2>
+        <p>The team is studying at the Informatics Institute of Technology and built the prototype for the 5COSC021C Agile Team Project.</p>
+      </div>
+      <ul class="people">
+        <li><span class="avatar" aria-hidden="true">VH</span><div><h3>Vidul Himalya</h3><p>UI/UX and accessibility</p></div></li>
+        <li><span class="avatar" aria-hidden="true">JF</span><div><h3>Jithvin Fernando</h3><p>Front-end developer</p></div></li>
+        <li><span class="avatar" aria-hidden="true">SR</span><div><h3>Sanuka Ransilu</h3><p>Front-end developer</p></div></li>
+        <li><span class="avatar" aria-hidden="true">NR</span><div><h3>Nethula Randes</h3><p>Marketing and landing page</p></div></li>
+        <li><span class="avatar" aria-hidden="true">AW</span><div><h3>Abdul Waajid</h3><p>Research and project management</p></div></li>
+        <li><span class="avatar" aria-hidden="true">YM</span><div><h3>Yahya Mohamed</h3><p>Technology and architecture</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="waitlist" class="waitlist">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Join the waitlist</h2>
+        <p>Leave your email and the team will tell you when a new version of the prototype goes live.</p>
+        <p class="count" id="signup-count" hidden></p>
+      </div>
+      <form class="signup" id="signup" novalidate>
+        <div class="field">
+          <label for="su-name">Name <span>(optional)</span></label>
+          <input type="text" id="su-name" name="name" maxlength="80" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="su-email">Email</label>
+          <input type="email" id="su-email" name="email" maxlength="254" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="su-role">I'm a</label>
+          <select id="su-role" name="role" required>
+            <option value="student">Student</option>
+            <option value="staff">Staff member</option>
+            <option value="other">Someone else</option>
+          </select>
+        </div>
+        <div class="trap" aria-hidden="true"><label for="su-website">Website</label><input type="text" id="su-website" name="website" tabindex="-1" autocomplete="off"></div>
+        <label class="consent"><input type="checkbox" id="su-consent" name="consent" required><span>I agree to the team storing my name and email as described in the <a href="#privacy">privacy notice</a>.</span></label>
+        <button type="submit" class="btn btn-red">Join the waitlist</button>
+        <p class="form-status" id="signup-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
   <section id="faq">
     <div class="wrap">
       <div class="intro">
@@ -278,6 +387,20 @@ dialog img{max-height:86vh;width:auto;margin:0 auto}
         <details open><summary>Is this the real IIT intranet?</summary><p>No. It is a front-end prototype built for the 5COSC021C Agile Team Project at the University of Westminster. Sign-in is simulated and does not check real IIT credentials.</p></details>
         <details><summary>How do I sign in to the demo?</summary><p>Press Try the live demo and use any email and password, or the Google button. You land on the student dashboard. Sign out brings you back to this page.</p></details>
         <details><summary>Do the document links open real files?</summary><p>Not yet. Resource and form links show a short message instead of opening a document. The sidebar moves between the seven pages.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" style="padding-top:0">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Privacy notice</h2>
+      </div>
+      <div class="privacy-text">
+        <p>The waitlist form is the only part of this site that collects personal data. It stores the name, email address and role you enter, along with the date you joined, so the team can email you about the prototype.</p>
+        <p>Sign-ups sit in private storage on Vercel, the site's host, in its Mumbai region, and only the team can read them. The team won't share or sell them or use them for anything else, and will delete them when the project ends.</p>
+        <p>To see or delete your entry, contact the team using the details at the bottom of this page.</p>
+        <p>The site counts visits with Vercel Web Analytics, which uses no cookies and doesn't identify you.</p>
       </div>
     </div>
   </section>
@@ -291,11 +414,23 @@ dialog img{max-height:86vh;width:auto;margin:0 auto}
       <a href="iit_intranet_portal.html" class="demo-link">Sign in</a>
     </div>
     <div>
+      <h4>Contact</h4>
+      <ul>
+        <!-- TODO: replace with the team's email and social accounts before the viva. -->
+        <li>Email: to be added</li>
+        <li><a href="https://github.com/VidulHimalya-GIT/IIT-Intranet"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></li>
+        <li>LinkedIn and Instagram: to be added</li>
+      </ul>
+    </div>
+    <div>
       <h4>This page</h4>
       <ul>
         <li><a href="#changes">What changed</a></li>
         <li><a href="#tour">Tour</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#waitlist">Waitlist</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="#privacy">Privacy notice</a></li>
       </ul>
     </div>
   </div>
@@ -333,6 +468,44 @@ document.querySelectorAll('.frame > a').forEach(a => a.addEventListener('click',
 }));
 document.getElementById('viewer-close').addEventListener('click', () => viewer.close());
 viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
+
+// Waitlist: show the sign-up count and send the form to /api/waitlist.
+const form = document.getElementById('signup');
+const statusEl = document.getElementById('signup-status');
+const countEl = document.getElementById('signup-count');
+function showCount() {
+  fetch('/api/waitlist').then(r => r.ok ? r.json() : null).then(d => {
+    if (!d || typeof d.count !== 'number') return;
+    countEl.innerHTML = d.count === 0 ? 'Be the first to join.' : `<strong>${d.count}</strong> ${d.count === 1 ? 'person has' : 'people have'} joined so far.`;
+    countEl.hidden = false;
+  }).catch(() => {});
+}
+showCount();
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form));
+  data.consent = form.consent.checked;
+  if (!form.email.checkValidity()) { statusEl.className = 'form-status err'; statusEl.textContent = 'Enter a valid email address.'; form.email.focus(); return; }
+  if (!data.consent) { statusEl.className = 'form-status err'; statusEl.textContent = 'Tick the box to agree to the privacy notice.'; form.consent.focus(); return; }
+  const button = form.querySelector('button');
+  button.disabled = true;
+  statusEl.className = 'form-status';
+  statusEl.textContent = 'Sending…';
+  try {
+    const res = await fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(out.error || 'Something went wrong. Try again in a minute.');
+    form.reset();
+    statusEl.className = 'form-status ok';
+    statusEl.textContent = "You're on the list. The team will email you when a new version goes live.";
+    showCount();
+  } catch (err) {
+    statusEl.className = 'form-status err';
+    statusEl.textContent = err.message;
+  } finally {
+    button.disabled = false;
+  }
+});
 </script>
 </body>
 </html>
