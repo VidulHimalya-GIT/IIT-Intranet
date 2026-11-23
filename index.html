@@ -473,8 +473,9 @@ viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close();
 const form = document.getElementById('signup');
 const statusEl = document.getElementById('signup-status');
 const countEl = document.getElementById('signup-count');
-function showCount() {
-  fetch('/api/waitlist').then(r => r.ok ? r.json() : null).then(d => {
+// The count is cached for 30 seconds; after your own sign-up, ask for a fresh one.
+function showCount(fresh) {
+  fetch(fresh ? `/api/waitlist?fresh=${Date.now()}` : '/api/waitlist').then(r => r.ok ? r.json() : null).then(d => {
     if (!d || typeof d.count !== 'number') return;
     countEl.innerHTML = d.count === 0 ? 'Be the first to join.' : `<strong>${d.count}</strong> ${d.count === 1 ? 'person has' : 'people have'} joined so far.`;
     countEl.hidden = false;
@@ -498,7 +499,7 @@ form.addEventListener('submit', async e => {
     form.reset();
     statusEl.className = 'form-status ok';
     statusEl.textContent = "You're on the list. The team will email you when a new version goes live.";
-    showCount();
+    showCount(true);
   } catch (err) {
     statusEl.className = 'form-status err';
     statusEl.textContent = err.message;
